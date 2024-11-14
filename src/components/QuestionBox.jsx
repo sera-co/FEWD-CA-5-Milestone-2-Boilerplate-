@@ -1,14 +1,17 @@
-import React from 'react';
+import React,{useState} from 'react';
 import QuestionChoice from './QuestionChoice';
 
 const QuestionBox = ({ questions, query, selectchoice }) => {
+  const [ishighlighted,setIshighlighted]=useState(false);
   // TASK 3: Implement logic to highlight the question text when the "Highlight" button is clicked.
   // You will need to manage state for this. Make the text red when highlighted and blue when not.
   const highlightHandler = () => {
+    setIshighlighted(true);
     // Implement the highlight logic
   };
 
   const removeHighlightHandler = () => {
+    setIshighlighted(false);
     // Implement the remove highlight logic
   };
 
@@ -22,7 +25,7 @@ const QuestionBox = ({ questions, query, selectchoice }) => {
           Question: {query + 1} out of {questions.length}
         </h1>
         {/* TASK 3: Change color of this text based on highlight */}
-        <h2>{questions[query].text}</h2>
+        <h2 style={{color:ishighlighted?'red':'blue'}}>{questions[query].text}</h2>
 
         <QuestionChoice
           options={questions[query].options}
